@@ -18,6 +18,12 @@ Or install it yourself as:
 
     $ gem install headlines
 
+To run the cli execute:
+
+    $ ./bin/headlines
+
+This will run the call method in lib/headlines/cli.rb
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -34,4 +40,3 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Headlines project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/headlines/blob/master/CODE_OF_CONDUCT.md).
