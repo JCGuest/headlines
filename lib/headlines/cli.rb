@@ -8,7 +8,7 @@ class Headlines::CLI
 
     def list_sources
         puts "Which source would you like to use?"
-        @sources = Headlines::Source.sources
+        @sources = Headlines::Source.all
         @sources.each.with_index(1) { |source, i| puts "#{i} - #{source.name}"}
     end 
 
@@ -25,9 +25,7 @@ class Headlines::CLI
             puts "#{chosen_source.name}"
             puts "#{chosen_source.url}"
             divider
-            puts "1. #{chosen_source.headline1}"
-            puts "2. #{chosen_source.headline2}"
-            divider
+            chosen_source.headlines_ary.each.with_index(1) { |headline,i| puts "#{i} - #{headline}" }
             list_headlines(input.to_i-1)
         elsif input == "back"
             list_sources
@@ -36,7 +34,7 @@ class Headlines::CLI
         else
             puts "Not a valid command. Please enter 'sources' to see the list of sources."
             end
-        end
+        end 
     end
 
     def list_headlines(user_input)
