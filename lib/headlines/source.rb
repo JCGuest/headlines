@@ -47,7 +47,6 @@ class Headlines::Source
         source.headline2 = "a"
         source.headline2_url = "a"
         source
-        binding.pry
     end
     
 end
