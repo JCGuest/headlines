@@ -7,6 +7,7 @@ class Headlines::Source
         source = []
         source << self.scrape_huff
         source << self.scrape_abc
+        source << self.scrape
     end
 
     def self.scrape_huff
@@ -35,5 +36,19 @@ class Headlines::Source
         source
     end
     
+    def self.scrape
+        doc = Nokogiri::HTML(open("https://apnews.com"))
+
+        source = self.new
+        source.name = "a"
+        source.url = "a"
+        source.headline1 = "a"
+        source.headline1_url = "a"
+        source.headline2 = "a"
+        source.headline2_url = "a"
+        source
+        binding.pry
+    end
     
 end
+
