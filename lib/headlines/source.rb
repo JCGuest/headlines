@@ -7,7 +7,7 @@ class Headlines::Source
         source = []
         source << self.scrape_huff
         source << self.scrape_abc
-        source << self.scrape
+        source << self.scrape_tbi
     end
 
     def self.scrape_huff
@@ -36,16 +36,16 @@ class Headlines::Source
         source
     end
     
-    def self.scrape
-        doc = Nokogiri::HTML(open("https://apnews.com"))
+    def self.scrape_tbi
+        doc = Nokogiri::HTML(open("https://www.thebureauinvestigates.com"))
 
         source = self.new
-        source.name = "a"
-        source.url = "a"
-        source.headline1 = "a"
-        source.headline1_url = "a"
-        source.headline2 = "a"
-        source.headline2_url = "a"
+        source.name = "The Bureau Investigates"
+        source.url = "https://www.thebureauinvestigates.com"
+        source.headline1 = doc.search("body > a > div.tb-c-story-header__heading.tb-o-layout-width > h1").text.strip
+        source.headline1_url = doc.search("body > a").attribute("href").value
+        source.headline2 = doc.search("body > div.tb-c-story-previews.tb-c-story-previews--homepage > div > div.tb-o-grid > div:nth-child(1) > a > h2").text.strip
+        source.headline2_url = doc.search("body > div.tb-c-story-previews.tb-c-story-previews--homepage > div > div.tb-o-grid > div:nth-child(1) > a").attribute("href").value
         source
     end
     
