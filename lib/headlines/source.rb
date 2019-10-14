@@ -62,4 +62,3 @@ class Headlines::Source
     end
     
  end
-

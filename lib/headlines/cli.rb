@@ -48,17 +48,6 @@ class Headlines::CLI
             puts "Enter the number of the headline for the web address or enter 'back' to see the sources again."
             puts ""
             input = gets.strip
-
-                # if input.to_i > 0
-                #     selected_source = @sources[user_input]
-                #     puts "#{selected_source.name}"
-                #     selected_source.headlines_ary.each do |h|
-                #         puts "#{h[input.to_i-1]}"
-                #     end
-                #     selected_source.url_ary.each do |url|
-                #         puts "#{url[input.to_i-1]}"
-                #     end
-
                 if input.to_i ==  1
                     selected_source = @sources[user_input]
                     divider
