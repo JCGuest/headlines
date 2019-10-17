@@ -38,7 +38,7 @@ class Headlines::Scraper
         source.url_ary << source.headline4_url
         source.url_ary << source.headline5_url
 
-        Headlines::Source.new(source.name, source.url, source.headline1, source.headline2, source.headline1_url, source.headline2_url, source.headlines_ary, source.url_ary)
+        Headlines::Source.new(source.name, source.url, source.headlines_ary, source.url_ary)
         source
     end
 
@@ -61,7 +61,7 @@ class Headlines::Scraper
         source.url_ary << source.headline1_url
         source.url_ary << source.headline2_url
 
-        Headlines::Source.new(source.name, source.url, source.headline1, source.headline2, source.headline1_url, source.headline2_url, source.headlines_ary, source.url_ary)
+        Headlines::Source.new(source.name, source.url, source.headlines_ary, source.url_ary)
         source
     end
 
@@ -84,7 +84,7 @@ class Headlines::Scraper
         source.url_ary << source.headline1_url
         source.url_ary << source.headline2_url
 
-        Headlines::Source.new(source.name, source.url, source.headline1, source.headline2, source.headline1_url, source.headline2_url, source.headlines_ary, source.url_ary)
+        Headlines::Source.new(source.name, source.url, source.headlines_ary, source.url_ary)
         source
     end
 
