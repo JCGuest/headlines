@@ -11,6 +11,9 @@ class Headlines::CLI
 
     def list_sources
         puts ""
+        puts "Listed below are a few online news sources."
+        puts "Once you select your source you will be givien the top stories"
+        puts "from that page and have the choice to get more info on each story."
         puts "Which source would you like to use?"
         puts ""
         divider
