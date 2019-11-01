@@ -11,23 +11,21 @@ class Headlines::Scraper
         source = self.new
         source.headlines_ary = []
         source.url_ary = []
+        line_num = [1,2,3,4,5,6]
         
         source.name = "Huffington Post"
         source.url = "https://huffpost.com"
+
         source.headlines_ary[0] = doc.search("#zone-main > div > div > div > div > div > div > a > div").text.strip
         source.url_ary[0] = doc.search("#zone-main > div > div > div > div > div > div > a").attribute("href").value
-        source.headlines_ary[1] = doc.search("#zone-left > div.zone__content > div:nth-child(1) > div > div > div > div > a > div").text.strip
-        source.url_ary[1] = doc.search("#zone-left > div.zone__content > div:nth-child(1) > div > div > div > div > a").attribute("href").value
-        source.headlines_ary[2] = doc.search("#zone-left > div.zone__content > div:nth-child(2) > div > div > div > div > a > div").text.strip
-        source.url_ary[2] = doc.search("#zone-left > div.zone__content > div:nth-child(2) > div > a").attribute("href").value
-        source.headlines_ary[3] = doc.search("#zone-left > div.zone__content > div:nth-child(3) > div > div > div > div > a > div").text.strip
-        source.url_ary[3] = doc.search("#zone-left > div.zone__content > div:nth-child(3) > div > a").attribute("href").value
-        source.headlines_ary[4] = doc.search("#zone-left > div.zone__content > div:nth-child(4) > div > div > div > div > a > div").text.strip
-        source.url_ary[4] = doc.search("#zone-left > div.zone__content > div:nth-child(4) > div > a").attribute("href").value
-        source.headlines_ary[5] = doc.search("#zone-left > div.zone__content > div:nth-child(5) > div > div > div > div > a > div").text.strip
-        source.url_ary[5] = doc.search("#zone-left > div.zone__content > div:nth-child(5) > div > a").attribute("href").value
-        source.headlines_ary[6] = doc.search("#zone-left > div.zone__content > div:nth-child(6) > div > div > div > div > a > div").text.strip
-        source.url_ary[6] = doc.search("#zone-left > div.zone__content > div:nth-child(6) > div > a").attribute("href").value
+
+        line_num.map do |i|
+            source.headlines_ary[ i ] = doc.search("#zone-left > div.zone__content > div:nth-child(#{i}) > div > div > div > div > a > div").text.strip
+        end
+
+        line_num.map do |i|
+            source.url_ary[ i ] = doc.search("#zone-left > div.zone__content > div:nth-child(#{i}) > div > div > div > div > a").attribute("href").value
+        end
 
         Headlines::Source.new(source.name, source.url, source.headlines_ary, source.url_ary)
         source
@@ -74,9 +72,7 @@ class Headlines::Scraper
         source.url_ary[3] = doc.search("body > div.tb-c-story-previews.tb-c-story-previews--homepage > div > div.tb-o-grid > div:nth-child(3) > a").attribute("href").value
         source.headlines_ary[4] = doc.search("body > div.tb-c-story-previews.tb-c-story-previews--homepage > div > div.tb-o-grid > div:nth-child(4) > a > h2").text.strip
         source.url_ary[4] = doc.search("body > div.tb-c-story-previews.tb-c-story-previews--homepage > div > div.tb-o-grid > div:nth-child(4) > a").attribute("href").value
-
         Headlines::Source.new(source.name, source.url, source.headlines_ary, source.url_ary)
         source
     end
-
 end
